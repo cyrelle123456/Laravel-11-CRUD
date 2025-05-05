@@ -52,14 +52,12 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user = User::create([
+        User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
 
-        Auth::login($user);
-
-        return redirect()->route('dashboard');
+        return redirect()->route('login')->with('success', 'Registration successful! Please login.');
     }
 } 
