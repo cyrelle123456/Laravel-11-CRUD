@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -12,7 +12,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center">Login</h3>
+                        <h3 class="text-center">Register</h3>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
@@ -21,21 +21,29 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required autofocus>
+                            </div>
+                            <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required autofocus>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                            </div>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary">Register</button>
                             </div>
                             <div class="text-center mt-3">
-                                <p>Don't have an account? <a href="{{ route('register') }}">Register here</a></p>
+                                <p>Already have an account? <a href="{{ route('login') }}">Login here</a></p>
                             </div>
                         </form>
                     </div>
@@ -44,4 +52,4 @@
         </div>
     </div>
 </body>
-</html>
+</html> 
